@@ -1,4 +1,114 @@
+/* Collapse things in the html to help make sense of code */
+/* can use Pesticide, or just add borders */
+
 * {
+  box-sizing: border-box;
+}
+
+/* set box sizing to border-box so by default the content area gets resized depending on any padding or vaules that you may add */
+
+/* centers text within the parent */
+/* font is inherited- passed down from parent to child. Listing multiples provide back ups incase a browser doesn't support it. Put on your body the font that's most consistent throughout your document, then target directly items that need to change.  */
+
+body {
+  text-align: center;
+  font-family: Helvetica, arial, sans-serif;
+}
+
+/* go through and set width of images to 100%, sizes them to 100% of container so they change width w/ any container changes */
+
+img {
+  width: 100%;
+}
+
+/* remove bullets from list items */
+/* if you inspect the UL, you will see there is default padding coming in from the browser style sheet */
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* looking at html you have octodex and octocats. Default display of li is a child, will act like a block level */
+/* these are inside a UL (full width of browser), have 3 that you want to sit side by side, set percentage of parent- ex 30%. Can also use measure "cmnd + shift + 4" (hit escape prior to releasing to avoid screen shot) */
+.octocat {
+  display: inline-block;
+  width: 30%;
+  /* height: 100%; */
+}
+
+/* inside octocat you have 2 elements that are sibllings- anchor tag <a> which includes an image, and an "image footer". Can use color meeter to create border */
+/*  .octocat > a  targeting the child of octocat */
+/* default display of an anchor tag (if it's an li it will make it act like a block), otherwise they're inline */
+/* the height of an inline element is determined by the line height. An image is self closing, therefore it's not read as having content, and therefore if you don't change anchor tag to display block it will collapse it, instead of wrapping around it around the image which is what we want.  */
+/* set position relative so you can change child elements */
+
+.octocat > a {
+  border: solid 1px #D4D3D3;
+  display: inline-block;
+  border-radius: 3px;
+  position: relative;
+}
+
+/* to get little triangle under the image- pseudo element on anchor tag. A pseudo element is like a pretend element, not actually in html or adding any content, just adding visual. If you swap border-top for border- left, right, bottom, it will change the way the triangle points. */
+/* a pseudo element is going before or after an element. B/c an image has no content, you can't attach a pseudo element to an image */
+
+.octocat > a::after {
+  content: '';
+  height: 0;
+  width: 0;
+  border-top: solid 10px #D4D3D3;
+  border-left: solid 10px transparent;
+  border-right: solid 10px transparent;
+
+  position: absolute;
+  top: 100%;
+  right: 1%;
+
+}
+
+
+.image-footer {
+  border-bottom: solid 1px #D4D3D3;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+/* By making it position absolute, it brings element out of flow, other elements ignore it. The authors then jumped up because they are not ignoring it and being on another line.  */
+
+/* When moving elements, it's lining up the top and left edge of the element.  */
+.image-number {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+
+/* pseudo element to create '#' */
+.image-number::before {
+  content: '#';
+}
+/* the UL was block level, changing to inline-block will allow it to sit beside <a> and <span> */
+.authors {
+  display: inline-block;
+}
+
+/* every li in the UL authors has an anchor inside of it, and each has an image. When you target anchor it tells the image of the authors to be 30px (bc they're responding to width set on anchor tag) */
+.authors > li > a {
+  display: inline-block;
+  width: 30px;
+}
+
+/* initially was text-align center, bc that's what was set on the body, so targeting the image caption moved it's text content to the right.  */
+.image-caption {
+  text-align: right;
+}
+
+        /* ////////////  CLASS NOTES ABOVE //////////////// */
+        /* ////////////  Previous Solution below //////////////// */
+
+/* * {
   box-sizing: border-box;
 }
 
@@ -12,11 +122,11 @@ body {
 
 .octodex {
   width: 100%;
-  margin: 80px 0;
-  /* display: inline-block; */
-  /* border: solid 3px blue; */
-  /* border-radius: 5px; */
-  margin: 200px 200px 200px 200px;
+  margin: 80px 0; */
+          /* display: inline-block; */
+          /* border: solid 3px blue; */
+          /* border-radius: 5px; */
+  /* margin: 200px 200px 200px 200px;
   background: white;
 
 }
@@ -25,9 +135,9 @@ body {
   display: inline-block;
   position: relative;
   width: 30%;
-  padding: 20px;
-  /* margin: 20px 20px 20px 20px; */
-  margin-top: 20px;
+  padding: 20px; */
+            /* margin: 20px 20px 20px 20px; */
+  /* margin-top: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
   margin-left: 20px;
@@ -40,11 +150,11 @@ body {
 .octocat img {
   max-width: 300px;
   height: auto;
-  border: solid 2px #D4D3D3;
-  /* border: solid 3px purple; */
-  border-radius: 5px;
-  /* margin: 0 auto; */
-  position: relative;
+  border: solid 2px #D4D3D3; */
+            /* border: solid 3px purple; */
+  /* border-radius: 5px; */
+            /* margin: 0 auto; */
+  /* position: relative;
   display: inline-block;
   margin-top: 20px;
   margin-right: 20px;
@@ -59,20 +169,20 @@ body {
   border: solid 3px green;
   border-radius: 5px;
   background: white;
-  float: right;
-  /* margin-right: 0px; */
-  /* margin-top: 10px;
-  margin-left: 10px; */
-}
+  float: right; */
+              /* margin-right: 0px; */
+              /* margin-top: 10px;
+              margin-left: 10px; */
+/* }
 
 .image-footer {
   display: inline-block;
   border-bottom: solid 2px #D4D3D3;
-  background: white;
-  /* padding-top: 20px; */
+  background: white; */
+              /* padding-top: 20px; */
 
 
-}
+/* }
 
 .image-number {
   font-size: 1.5 rem;
@@ -81,6 +191,6 @@ body {
 
 .image-number:before {
   content:'#';
-  }
+  } */
 
   /*  */
