@@ -9,6 +9,11 @@
 
 /* centers text within the parent */
 /* font is inherited- passed down from parent to child. Listing multiples provide back ups incase a browser doesn't support it. Put on your body the font that's most consistent throughout your document, then target directly items that need to change.  */
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #262929;
+}
 
 body {
   text-align: center;
@@ -37,7 +42,7 @@ ul {
   /* height: 100%; */
 }
 
-/* inside octocat you have 2 elements that are sibllings- anchor tag <a> which includes an image, and an "image footer". Can use color meeter to create border */
+/* inside octocat you have 2 elements that are sibllings- anchor tag <a> which includes an image, and an "image footer". Can use color meter to create border */
 /*  .octocat > a  targeting the child of octocat */
 /* default display of an anchor tag (if it's an li it will make it act like a block), otherwise they're inline */
 /* the height of an inline element is determined by the line height. An image is self closing, therefore it's not read as having content, and therefore if you don't change anchor tag to display block it will collapse it, instead of wrapping around it around the image which is what we want.  */
@@ -79,6 +84,7 @@ ul {
 
 /* When moving elements, it's lining up the top and left edge of the element.  */
 .image-number {
+  color: #D0CECC;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -103,8 +109,26 @@ ul {
 /* initially was text-align center, bc that's what was set on the body, so targeting the image caption moved it's text content to the right.  */
 .image-caption {
   text-align: right;
+  color: #827F80;
 }
 
+
+
+/* more notes:
+-In-line elements: can't set height/width, determined by content and line height.  If you want to be able to change width/height, change to inline block.
+
+-Block level elements: 100% width of parent. If you want them to sit side by side w/ other elements, change them to in-line block.
+
+-parent/child: whether one element is inside of another element
+  DOM tree:
+      https://www.w3schools.com/js/pic_htmltree.gif
+
+      ul > li
+      target the li that's a child of this ul
+
+
+
+ */
         /* ////////////  CLASS NOTES ABOVE //////////////// */
         /* ////////////  Previous Solution below //////////////// */
 
